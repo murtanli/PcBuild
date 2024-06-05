@@ -1,0 +1,35 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    height: 10vh;
+    margin: 0px;
+    background-color: #FF5621;
+    font-family: "Inter", sans-serif;
+}
+header>div.name_block {
+    flex-grow: 2;
+    color: #ffffff;
+    padding-left: 8vh;
+    font-size: 0.8vw;
+}
+header>div.button_box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    text-decoration: none;
+    color: #ffffff;
+}
+header>div.button_box>div.header_btn>a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1vw;
+}
+header>div.button_box>div.header_btn>a:hover {
+    text-decoration: underline;
+}
+header>div.empty {
+    flex-grow: 3;
+}

@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    background-color: #F0EBEB;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+/* Это блок поисковика */
+.search {
+    background: linear-gradient(#EC5424, #883115);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 3vh;
+}
+/* Это поисковая строка, сори что параметр ширины использовал, но они подругому не хотят нормально ложиться */
+.search>input {
+    border: none;
+    border-radius: 13px;
+    font-size: 1.2vw;
+    margin: 1vh;
+    margin-left: 1vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    padding-left: 1vw;
+    width: 50vw;
+}.search>input:placeholder-shown {
+    color: #686767;
+    font-size: 1.2vw;
+
+}
+.search>input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+/* Это списки выплывающие */
+.search>div.selectors {
+    margin-left: 1vw;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-between;
+}
+.search>div.selectors>select {
+    border: none;
+    border-radius: 13px;
+    text-align: center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-size: 1vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    margin-right: 3vw;
+    width: 10vw;
+    color: #686767;
+}
+.search>div.selectors>select>option {
+    margin-left: 1vw;
+}
+.search>div.selectors>select:not([multiple]) {
+    padding-right: 1vw;
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    background-size: 10% auto;
+    background-image: url("../pictures/deals/select.svg");
+}
+select::-ms-expand {
+    display: none;
+}
+div.search>div.selectors>select:focus {
+    outline: 0;
+    box-shadow: none;
+}
+/* Это минимальная и максимальная стоимости */
+.search>div.selectors>div.range_price {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ebe9e96c;
+    width: 20vw;
+    border-radius: 13px;
+}
+.search>div.selectors>div.range_price>input {
+    border: none;
+    border-radius: 13px;
+    font-size: 1vw;
+    padding: 0px;
+    flex-grow: 0;
+    text-align: center;
+    margin: 0px;
+    width: 9vw;
+}
+.search>div.selectors>div.range_price>input:focus {
+    outline: 0;
+    box-shadow: none;
+}
+.search>div.selectors>div.range_price>input:placeholder-shown {
+    color: #686767;
+}
+.search>button{
+    margin-top: 3vh;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border-radius: 25px;
+    border: none;
+    background-color: #FF5621;
+    color: #ffffff;
+    font-size: 130%;
+}
+/* Это блок товара */
+div.deal_list {
+    margin-bottom: 5vh;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+div.deal_list>div.object_1 {
+    width: 80vw;
+    display: flex;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    background-color: #ffffff;
+    transition: 400ms ease-out;
+    overflow: hidden;
+}
+div.deal_list>div.object_1:hover {
+    box-shadow: 0 0 30px 5px #969595;
+}
+div.deal_list>div.object_1>img {
+    margin: 2vh;
+    
+}
+
+/* Описание блока товара */
+div.deal_list>div.object_1>div.computer_info_text {
+    margin-left: 5vw;
+    margin-bottom: 5vh;
+}
+div.deal_list>div.object_1>div.computer_info_text>h2 {
+    font-size: 1.5vw;
+}
+div.deal_list>div.object_1>div.computer_info_text>p {
+    margin: 0px;
+    margin-top: 1vh;
+    font-size: 1vw;
+}
+div.deal_list>div.object_1>div.computer_info_text>p>span {
+    font-weight: 600;
+}
+div.deal_list>div.object_1>div.computer_info_text>button {
+    width: 13vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    border-radius: 25px;
+    border: none;
+    background-color: #FF5621;
+    color: #ffffff;
+    font-size: 130%;
+}
+div.deal_list>div.object_1>div.computer_info_text>button:hover {
+    background-color: #d4481d;
+    cursor: pointer;
+}
+/* Это кнопка которая ведет в конфигуратор */
+div.deal_list>div.object_1>div.computer_info_text>a {
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border-radius: 25px;
+    border: none;
+    background-color: #FF5621;
+    color: #ffffff;
+    font-size: 130%;
+    text-decoration: none;
+}
+div.deal_list>div.object_1>div.computer_info_text>a:hover {
+    background-color: #d4481d;
+    cursor: pointer;
+}
+
+
+.message_block_none{
+    display: none;
+}
+.message_block{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 80%);
+    z-index: 999;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.close_message button{
+    font-family: Inter;
+    font-size: 1.2vw;
+    width: 25vh;
+    height: 6vh;
+    color: white;
+    border: none;
+    background-color: #FF5621;
+    transition: 0.4s ease;
+    border-radius: 2vh;
+}
+.close_message button:hover{
+    background-color: rgb(232 232 232);
+    color: black;
+}
+.close_message {
+    margin-bottom: 10vh;
+}
+.message{
+    display: flex;
+    width: 50vh;
+    background-color: #ffffffeb;
+    border-radius: 2vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.messages{
+    padding: 5vh;
+}
+.messages li{
+    font-family: Inter;
+    font-size: 1vw;
+    font-weight: 400;
+    color: black;
+    line-height: 1.4;
+}
+.messages li::marker{
+    color: black;
+}

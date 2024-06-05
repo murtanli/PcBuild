@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/deals.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header id="header">
+        <div class="name_block">
+            <h1>Сборка пк</h1>
+        </div>
+        <div class="button_box">
+            <div class="header_btn">
+                <a href="{% url 'main_page' %}">ГЛАВНАЯ</a>
+            </div>
+            <div class="header_btn">
+                <a href="{% url 'search_page' %}">ПРЕДЛОЖЕНИЯ</a>
+            </div>
+            <div class="header_btn">
+                <a href="{% url 'info_page' %}">О НАС</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <div class="header_btn">
+                    <a href="{% url 'auth' %}">Авторизация / </a>
+                    <a href="{% url 'sign_in' %}">Регистрация</a>
+                </div>
+            {% else %}
+                <div class="header_btn">
+                    <a href="{% url 'logout_view' %}">Выйти из аккаунта</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="empty"></div>
+    </header>
+    {% if messages %}
+    <div class="message_block">
+        <div class="message">
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            <div class="close_message">
+                <button onclick="closeMessageBlock()">закрыть</button>
+            </div>
+        </div>
+    </div>
+    
+{% endif %}
+    <main>
+        <!-- Это блок поиска и фильтров -->
+        <form class="search" method="post" action="{% url 'search_page' %}">
+            {% csrf_token %}
+            <input type="text" placeholder="Введите название комплектующих">
+            <div class="selectors">
+                <select name="type_pc" id="marka">
+                    <option value="">Назначение</option>
+                    <option value="Игровой">Игровой</option>
+                    <option value="Офисный">Офисный</option>
+                    <option value="Для дома">Для дома</option>
+                    <option value="Профессиональный">Профессиональный</option>
+                    <option value="Пользовательский">Пользовательский</option>
+                </select>
+                <select name="cpu" id="probeg">
+                    <option value="">Процессор</option>
+                    <option value="Intel">Intel</option>
+                    <option value="AMD">AMD</option>
+                </select>
+                <select name="grahpics_card" id="status">
+                    <option value="">Видеокарта</option>
+                    <option value="MSI">MSI</option>
+                    <option value="GIGABYTE">GIGABYTE</option>
+                    <option value="PNY">PNY</option>
+                    <option value="Zotac">Zotac</option>
+                    <option value="Colorful">Colorful</option>
+                </select>
+                <div class="range_price">
+                    <input name="min_price" type="text" placeholder="Мин. цена">
+                    <input name="max_price" type="text" placeholder="Макс. цена">
+                </div>
+            </div>
+            <button type="submit">Поиск</button>
+        </form>
+        <!-- Это блок с товарами -->
+        <div class="deal_list">
+            {% for build in builds %}
+                <div class="object_1">
+                    <img src="{% static 'images/computer_object.png' %}" alt="car_img">
+                    <div class="computer_info_text">
+                    <h2>Компьютер {{ build.category }}</h2>
+                    <p><span>Назначение: </span>{{ build.category }}</p>
+                    <p><span>Процессор: </span>{{ build.processor }}</p>
+                    <p><span>Графика: </span>{{ build.graphics_card }}</p>
+                    <p><span>Оперативная память: </span>{{ build.ram }}</p>
+                    <p><span>Диски: </span>{{ build.memory }}</p>
+                    <p><span>Материнская плата: </span>{{ build.motherboard }}</p>
+                    <p><span>Блок питания: </span>{{ build.power_unit }}</p>
+                    <p><span>Корпус: </span>{{ build.frame }}</p>
+                    <h3>Цена - {{ build.price }} руб.</h3>
+                    {% if not request.user.is_authenticated %}
+                        <button class="order" disabled>Зарегестрируйтесь !</button>
+                    {% else %}
+                        <a class="order" href="{% url 'order_pc' build.id %}">Заказать</a>
+                    {% endif %}
+                    <a href="{% url 'configurator_page' build.id %}">Изменить</a>
+                    </div>
+                </div>
+            {% endfor %}
+        
+        </div>
+    </main>
+    <footer>
+        <div class="name_block">
+            <h1>Сборка пк</h1>
+        </div>
+        <div class="footer_text">
+            <p>Телефон: +7 (***)***-**-**</p>
+        </div>
+        <div class="footer_text">
+            <p>Почта: ***********@mail.ru</p>
+        </div>
+        <div class="links">
+            <a href="#"><img src="{% static 'images/inst_footer.svg' %}" alt="instagram"></a>
+            <a href="#"><img src="{% static 'images/vk_footer.svg' %}" alt="vk"></a>
+            <a href="#"><img src="{% static 'images/youtube_footer.svg' %}" alt="youtube"></a>
+        </div>
+    </footer>
+</body>
+</html>
+<script>
+    function closeMessageBlock() {
+        var mesBlock = document.querySelector('.message_block');
+        mesBlock.classList.remove('message_block');
+        mesBlock.classList.add('message_block_none');
+    }
+    </script>

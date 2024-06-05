@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/configurator.css' %}">
+    <title>Сборка ПК</title>
+</head>
+<body>
+    <header id="header">
+        <div class="name_block">
+            <h1>Сборка ПК</h1>
+        </div>
+        <div class="button_box">
+            <div class="header_btn">
+                <a href="{% url 'main_page' %}">ГЛАВНАЯ</a>
+            </div>
+            <div class="header_btn">
+                <a href="{% url 'search_page' %}">ПРЕДЛОЖЕНИЯ</a>
+            </div>
+            <div class="header_btn">
+                <a href="{% url 'info_page' %}">О НАС</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <div class="header_btn">
+                    <a href="{% url 'auth' %}">Авторизация / </a>
+                    <a href="{% url 'sign_in' %}">Регистрация</a>
+                </div>
+            {% else %}
+                <div class="header_btn">
+                    <a href="{% url 'logout_view' %}">Выйти из аккаунта</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="empty"></div>
+    </header>
+    {% if messages %}
+        <div class="message_block">
+            <div class="message">
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="close_message">
+                    <button onclick="closeMessageBlock()">закрыть</button>
+                </div>
+            </div>
+        </div>
+        
+    {% endif %}
+    <main>
+        <div class="menu">
+            <a href="#graphics" class="menu_button" onclick="slowScroll('#graphics')">Видеокарта</a>
+            <a href="#processor" class="menu_button" onclick="slowScroll('#processor')">Процессор</a>
+            <a href="#mother" class="menu_button" onclick="slowScroll('#mother')">Материнская плата</a>
+            <a href="#ozu" class="menu_button" onclick="slowScroll('#ozu')">Оперативная память</a>
+            <a href="#ssd" class="menu_button" onclick="slowScroll('#ssd')">SSD диски</a>
+            <a href="#hdd" class="menu_button" onclick="slowScroll('#hdd')">HDD диски</a>
+            <a href="#power" class="menu_button" onclick="slowScroll('#power')">Блок питания</a>
+            <a href="#case" class="menu_button" onclick="slowScroll('#case')">Корпус</a>
+        </div>
+
+        <div class="radio_list">
+            <div class="list_box" id="graphics">
+                <h3>Выберите видеокарту</h3>
+                <ul class="list">
+                    {% for card in graphics_cards %}
+                        <li class="list_value">
+                            <input data-compatible-graphics_card="{{ card.id }}" name="graphics_card" onchange="updatePrice();" type="radio" {% if pc_build.graphics_card.id == card.id %}checked{% endif %}>
+                            <label>{{ card.name }} - <span data-simpletype-value="{{ card.price }}">{{ card.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list_box" id="processor">
+                <h3>Выберите процессор</h3>
+                <ul class="list">
+                    {% for cpu in cpus %}
+                        <li class="list_value">
+                            <input data-compatible-processor="{{ cpu.id }}" name="processor" onchange="updatePrice();" type="radio" {% if pc_build.processor.id == cpu.id %}checked{% endif %}>
+                            <label>{{ cpu.name }} - <span data-simpletype-value="{{ cpu.price }}">{{ cpu.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list_box" id="mother">
+                <h3>Выберите материнскую плату</h3>
+                <ul class="list">
+                    {% for motherboard in motherboards %}
+                        <li class="list_value">
+                            <input data-compatible-motherboard="{{ motherboard.id }}" name="motherboard" onchange="updatePrice();" type="radio" {% if pc_build.motherboard.id == motherboard.id %}checked{% endif %}>
+                            <label>{{ motherboard.name }} - <span data-simpletype-value="{{ motherboard.price }}">{{ motherboard.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list_box" id="ozu">
+                <h3>Выберите оперативную память</h3>
+                <ul class="list">
+                    {% for ram in rams %}
+                        <li class="list_value">
+                            <input data-compatible-ram="{{ ram.id }}" name="ram" onchange="updatePrice();" type="radio" {% if pc_build.ram.id == ram.id %}checked{% endif %}>
+                            <label>{{ ram.name }} - <span data-simpletype-value="{{ ram.price }}">{{ ram.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list_box" id="ssd">
+                <h3>Выберите диск</h3>
+                <ul class="list">
+                    {% for memory in memorys %}
+                        <li class="list_value">
+                            <input data-compatible-memory="{{ memory.id }}" name="memory" onchange="updatePrice();" type="radio" {% if pc_build.memory.id == memory.id %}checked{% endif %}>
+                            <label>{{ memory.name }} - <span data-simpletype-value="{{ memory.price }}">{{ memory.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list_box" id="power">
+                <h3>Выберите блок питания</h3>
+                <ul class="list">
+                    {% for power_unit in power_units %}
+                        <li class="list_value">
+                            <input data-compatible-power_unit="{{ power_unit.id }}" name="power_unit" onchange="updatePrice();" type="radio" {% if pc_build.power_unit.id == power_unit.id %}checked{% endif %}>
+                            <label>{{ power_unit.name }} - <span data-simpletype-value="{{ power_unit.price }}">{{ power_unit.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="list_box" id="case">
+                <h3>Выберите корпус</h3>
+                <ul class="list">
+                    {% for frame in frames %}
+                        <li class="list_value">
+                            <input data-compatible-frame="{{ frame.id }}" name="frame" onchange="updatePrice();" type="radio" {% if pc_build.frame.id == frame.id %}checked{% endif %}>
+                            <label>{{ frame.name }} - <span data-simpletype-value="{{ frame.price }}">{{ frame.price }}</span> руб.</label>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+       
+
+        <div class="box_order">
+            <h1 class="price">Цена: <span id="price">0</span> руб.</h1>
+            {% if not request.user.is_authenticated %}
+                <button class="order" disabled>Зарегестрируйтесь !</button>
+            {% else %}
+                <button class="order" onclick="placeOrder()">Заказать</button>
+            {% endif %}
+        </div>
+
+        <a href="#header" onclick="slowScroll('#header')"><svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="1064.000000pt" height="1064.000000pt" viewBox="0 0 1064.000000 1064.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,1064.000000) scale(0.100000,-0.100000)">
+<path d="M5235 7771 c-44 -32 -364 -258 -710 -502 -347 -244 -1174 -826 -1838
+-1294 l-1207 -850 0 -1147 c0 -632 2 -1148 5 -1148 3 0 342 237 753 527 411
+289 891 628 1067 752 176 124 487 342 690 486 976 689 1314 925 1324 925 7 0
+109 -69 229 -153 2324 -1639 3592 -2532 3602 -2535 7 -3 10 395 10 1145 l-1
+1148 -1016 715 c-943 663 -1324 932 -2378 1675 -220 155 -411 289 -425 298
+-24 15 -27 14 -105 -42z"/>
+</g>
+</svg></a>
+            
+    </main>
+    <footer>
+        <div class="name_block">
+            <h1>Сборка ПК</h1>
+        </div>
+        <div class="footer_text">
+            <p>Телефон: +7 (***)***-**-**</p>
+        </div>
+        <div class="footer_text">
+            <p>Почта: ***********@mail.ru</p>
+        </div>
+        <div class="links">
+            <a href="#"><img src="{% static 'images/inst_footer.svg' %}" alt="instagram"></a>
+            <a href="#"><img src="{% static 'images/vk_footer.svg' %}" alt="vk"></a>
+            <a href="#"><img src="{% static 'images/telegram_footer.svg' %}" alt="telegram"></a>
+            <a href="#"><img src="{% static 'images/youtube_footer.svg' %}" alt="youtube"></a>
+        </div>
+    </footer>
+    <script>
+        function updatePrice() {
+            let totalPrice = 0;
+            document.querySelectorAll('input[type=radio]:checked').forEach(radio => {
+                const priceElement = radio.nextElementSibling.querySelector('[data-simpletype-value]');
+                totalPrice += parseFloat(priceElement.textContent);
+            });
+            document.getElementById('price').textContent = totalPrice;
+        }
+
+        function placeOrder() {
+            const selectedComponents = {};
+            document.querySelectorAll('input[type=radio]:checked').forEach(radio => {
+                const componentType = radio.name;
+                const componentId = radio.getAttribute(`data-compatible-${componentType}`);
+                selectedComponents[componentType] = componentId;
+            });
+            fetch('/place_order/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(selectedComponents)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {       
+                // Показываем сообщение о номере заказа
+                
+                location.reload();
+            })
+            .catch(error => {
+                alert('Произошла ошибка при оформлении заказа: ' + error.message);
+            });
+        }
+        
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function slowScroll(id) {
+            const target = document.querySelector(id);
+            window.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', updatePrice);
+
+        function closeMessageBlock() {
+            var mesBlock = document.querySelector('.message_block');
+            mesBlock.classList.remove('message_block');
+            mesBlock.classList.add('message_block_none');
+        }
+        </script>
+</body>
+</html>

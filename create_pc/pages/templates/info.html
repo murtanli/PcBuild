@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/info.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <header id="header">
+        <div class="name_block">
+            <h1>Сборка пк</h1>
+        </div>
+        <div class="button_box">
+            <div class="header_btn">
+                <a href="{% url 'main_page' %}">ГЛАВНАЯ</a>
+            </div>
+            <div class="header_btn">
+                <a href="{% url 'search_page' %}">ПРЕДЛОЖЕНИЯ</a>
+            </div>
+            <div class="header_btn">
+                <a href="{% url 'info_page' %}">О НАС</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <div class="header_btn">
+                    <a href="{% url 'auth' %}">Авторизация / </a>
+                    <a href="{% url 'sign_in' %}">Регистрация</a>
+                </div>
+            {% else %}
+                <div class="header_btn">
+                    <a href="{% url 'logout_view' %}">Выйти из аккаунта</a>
+                </div>
+            {% endif %}
+        </div>
+        <div class="empty"></div>
+    </header>
+    <main style="margin-bottom: 20vh;">
+        <!-- Меню перекллючения блоков -->
+        <div class="menu">
+            <a href="#" class="block_1_togle">ПОЧЕМУ МЫ</a>
+            <a href="#" class="block_2_togle">О НАС</a>
+            <a href="#" class="block_3_togle">КОНТАКТЫ</a>
+        </div>
+        <!-- Блок один -->
+        <div class="block_1">
+            <div class="b_1_text">
+                <h1>Почему мы?</h1>
+                <p>Наш сервис отличается возможностью выбрать сборку персонального компьютера под определенные нежды, будь то игры или работа</p>
+            </div>
+            <img src="{% static 'images/b_1_img.png' %}" alt="b_1_img">
+        </div>
+        <!-- Блок два -->
+        <div class="block_2">
+            <div class="b_2_text">
+                <h1>Кто мы?</h1>
+                <p>Мы неболльшая компанния готовая дать вам компьютер на котором будет приятно работать, или ставить новые рекорды в играх</p>
+            </div>
+            <img src="{% static 'images/b_2_img.png' %}" alt="b_2_img">
+        </div>
+        <!-- Блок три -->
+        <div class="block_3">
+            <h1>Вы можете связатся с нами через</h1>
+            <div class="phone_mail">
+                <p>Телефон: +7 (***)***-**-**</p>
+                <p>Почта: ***********@mail.ru</p>
+            </div>
+            <div class="social">
+                <a href="#"><img src="{% static 'images/inst_footer.svg' %}" alt="instagram"></a>
+                <a href="#"><img src="{% static 'images/vk_footer.svg' %}" alt="vk"></a>
+                <a href="#"><img src="{% static 'images/youtube_footer.svg' %}" alt="youtube"></a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="name_block">
+            <h1>Сборка пк</h1>
+        </div>
+        <div class="footer_text">
+            <p>Телефон: +7 (***)***-**-**</p>
+        </div>
+        <div class="footer_text">
+            <p>Почта: ***********@mail.ru</p>
+        </div>
+        <div class="links">
+            <a href="#"><img src="{% static 'images/inst_footer.svg' %}" alt="instagram"></a>
+            <a href="#"><img src="{% static 'images/vk_footer.svg' %}" alt="vk"></a>
+            <a href="#"><img src="{% static 'images/youtube_footer.svg' %}" alt="youtube"></a>
+        </div>
+    </footer>
+    <!-- Это библиотека jquary и скрипт переключения блоков -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/info_block_togle.js' %}"></script>
+</body>
+</html>

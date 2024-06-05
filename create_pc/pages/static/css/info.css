@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    background-color: #F0EBEB;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+
+
+/* Это меню переключения бллоков */
+main>div.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E9E6E6;
+}
+main>div.menu>a {
+    margin: 2vw 3vh;
+    text-decoration: none;
+    color: #000000;
+    font-size: 1vw;
+}
+
+
+/* Это блок один */
+main>div.block_1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 2.4vh;
+    flex-wrap: nowrap;
+}
+main>div.block_1>div.b_1_text {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+main>div.block_1>div.b_1_text>h1 {
+    font-size: 2vw;
+    margin: 2vw;
+
+}
+main>div.block_1>div.b_1_text>p {
+    text-align: center;
+    font-size: 1.5vw;
+    margin: 2.5vw;
+
+}
+
+
+/* Это блок два */
+main>div.block_2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 2.4vh;
+    flex-wrap: nowrap;
+}
+main>div.block_2>div.b_2_text {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 1;
+}
+main>div.block_2>div.b_2_text>h1 {
+    font-size: 2vw;
+    margin: 2vw;
+}
+main>div.block_2>div.b_2_text>p {
+    text-align: center;
+    font-size: 1.5vw;
+    margin: 2.5vw;
+}
+main>div.block_2>img {
+    flex-grow: 1;
+}
+
+
+/* Это блок три */
+main>div.block_3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.4vh;
+}
+main>div.block_3>h1 {
+    margin-top: 7vh;
+    font-size: 2vw;
+}
+main>div.block_3>div.phone_mail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+main>div.block_3>div.phone_mail>p {
+    margin: 4vw;
+    font-size: 1.7vw;
+}
+main>div.block_3>div.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    margin-bottom: 11vh;
+}

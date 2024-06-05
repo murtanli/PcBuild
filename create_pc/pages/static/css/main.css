@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    background-color: #F0EBEB;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* Стили блока 1 */
+div.block_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E3E3;
+    margin: 5vh;
+    margin-right: 40vw;
+    border-radius: 22px;
+    box-shadow: 0.6vw 0.6vw 0 0 #FF5621;
+}
+/* Текст и кнопка блока 1 */
+div.block_1>div.b_1_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5vw;
+    margin-right: 2vw;
+}
+div.block_1>div.b_1_text>h2 {
+    font-size: 1.6vw;
+}
+div.block_1>div.b_1_text>p {
+    font-size: 1.2vw;
+    margin-bottom: 6vh;
+}
+div.block_1>div.b_1_text>a {
+    background-color: #FF5621;
+    border: none;
+    font-size: 1.3vw;
+    color: #ffffff;
+    padding: 1.5vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 16px;
+    text-decoration: none;
+}
+div.block_1>div.b_1_text>a:hover {
+    cursor: pointer;
+    background-color: #db491d;
+}
+/* Картинка блока 1 */
+div.block_1>img {
+    padding: 0px;
+    width: 30vw;
+}
+
+
+/* Стили блока 2 */
+div.block_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E3E3;
+    margin: 5vh;
+    margin-left: 40vw;
+    margin-top: 6vw;
+    border-radius: 22px;
+    box-shadow: -0.6vw 0.6vw 0 0 #FF5621;
+}
+/* Текст и кнопка блока 2 */
+div.block_2>div.b_2_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 5vw;
+    margin-right: 2vw;
+}
+div.block_2>div.b_2_text>h2 {
+    font-size: 1.6vw;
+}
+div.block_2>div.b_2_text>p {
+    font-size: 1.2vw;
+    margin-bottom: 6vh;
+}
+div.block_2>div.b_2_text>a {
+    background-color: #FF5621;
+    border: none;
+    font-size: 1.3vw;
+    color: #ffffff;
+    padding: 1.5vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 16px;
+    text-decoration: none;
+}
+div.block_2>div.b_2_text>a:hover {
+    cursor: pointer;
+    background-color: #db491d;
+}
+/* Картинка блока 2 */
+div.block_2>img {
+    padding: 0px;
+    width: 30vw;
+}
+
+
+#slideshow #slidesContainer { 
+    margin:0 auto; 
+    width:560px; 
+    height:263px; 
+    overflow:auto; 
+    
+    /* разрешаем прокрутку */ 
+    
+    position:relative; 
+}
+#slideshow #slidesContainer .slide { 
+    margin:0 auto; 
+    width:540px; 
+    height:263px; 
+    float:left;
+}

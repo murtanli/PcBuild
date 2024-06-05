@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body{
+    background-color: #F0EBEB;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+/* Это стили меню навигации */
+main>div.menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 5vw;
+    background-color: #ffffff;
+    flex-grow: 0;
+    margin-top: 5vh;
+    position: sticky;
+    top: 2vh;
+    border-radius: 22px;
+    box-shadow: 1vh 1vh 0 0 #FF5621;
+}
+main>div.menu>a.menu_button {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.1vw;
+    margin: 1vh;
+    margin-left: 2vh;
+}
+
+
+/* Это стили списков разных комплектующих */
+main>div.radio_list {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-bottom: 10vh;
+}
+main>div.radio_list>div.list_box {
+    background-color: #ffffff;
+    margin: 5vh;
+    margin-bottom: 0px;
+    color: #000000;
+    flex-grow: 1;
+    border-radius: 22px;
+    border: 2px solid #FF5621;
+}
+main>div.radio_list>div.list_box:nth-child(8) {
+    margin-bottom: 5vh;
+}
+main>div.radio_list>div.list_box>h3 {
+    margin: 0px;
+    margin-top: 2vh;
+    margin-left: 2vw;
+    font-size: 1vw;
+}
+main>div.radio_list>div.list_box>ul.list>li.list_value {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 0.9vw;
+    margin-top: 2vh;
+    font-size: 1vw;
+}
+
+
+/* Это стили кнопочки, ведущей на самый верх, сорри что размер фиксированный, но иначе свг растягивается на всю страницу */
+main>a>svg {
+    display: none;
+    position: fixed;
+    width: 9vh;
+    height: 9vh;
+    left: 92vw;
+    top: 83vh;
+    opacity: 0.2;
+}
+main>a>svg:hover {
+    stroke: #FF5621;
+    fill: #FF5621;
+    opacity: 1;
+    transition: 230ms ease-in-out;
+}
+
+
+/* Это стили текста с итоговой ценой и кнопкой заказать */
+main>div.box_order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    position: sticky;
+    top: 5vh;
+    margin-right: 5vw;
+    margin-top: 5vh;
+}
+main>div.box_order>h1.price {
+    margin: 0px;
+    margin-bottom: 5vh;
+    font-size: 1.4vw;
+    background-color: #ffffff;
+    padding: 2vh;
+    flex-grow: 1;
+    border-radius: 22px;
+    box-shadow: 1vh 1vh 0 0 #FF5621;
+}
+main>div.box_order>button.order {
+    flex-grow: 1;
+    background-color: #FF5621;
+    color: #ffffff;
+    font-size: 1.2vw;
+    border: none;
+    border-radius: 22px;
+    padding: 1vh 2vw;
+}
+main>div.box_order>button.order:hover {
+    background-color: #e74e1f;
+    cursor: pointer;
+}
+
+
+
+.message_block_none{
+    display: none;
+}
+.message_block{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 80%);
+    z-index: 999;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.close_message button{
+    font-family: Inter;
+    font-size: 1.2vw;
+    width: 25vh;
+    height: 6vh;
+    color: white;
+    border: none;
+    background-color: #FF5621;
+    transition: 0.4s ease;
+    border-radius: 2vh;
+}
+.close_message button:hover{
+    background-color: rgb(232 232 232);
+    color: black;
+}
+.close_message {
+    margin-bottom: 10vh;
+}
+.message{
+    display: flex;
+    width: 50vh;
+    background-color: #ffffffeb;
+    border-radius: 2vh;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.messages{
+    padding: 5vh;
+}
+.messages li{
+    font-family: Inter;
+    font-size: 1vw;
+    font-weight: 400;
+    color: black;
+    line-height: 1.4;
+}
+.messages li::marker{
+    color: black;
+}
